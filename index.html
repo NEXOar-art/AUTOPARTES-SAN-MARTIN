@@ -23,6 +23,7 @@
   --wa:#25d366;
   --wa-dark:#1da851;
   --fb:#1877f2;
+  --ig:#d62976;
   --bg:#f4f6f9;
   --white:#ffffff;
   --text:#1c2b3a;
@@ -59,7 +60,7 @@ button{font-family:inherit;cursor:pointer}
 .header{background:var(--white);position:sticky;top:0;z-index:900;transition:box-shadow .3s;border-bottom:1px solid var(--line)}
 .header.scrolled{box-shadow:0 6px 24px rgba(11,22,38,.12)}
 .header .container{display:flex;align-items:center;justify-content:space-between;padding-top:10px;padding-bottom:10px;gap:20px}
-.logo{display:flex;align-items:center;gap:13px}
+.logo{display:flex;align-items:center;gap:13px;cursor:pointer}
 
 /* ===== LOGO CIRCULAR CON EFECTO ===== */
 .logo-badge{
@@ -112,14 +113,14 @@ button{font-family:inherit;cursor:pointer}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* ============ HERO CON FONDO EN MOVIMIENTO ============ */
+/* ============ HERO CON FONDO NÍTIDO EN MOVIMIENTO ============ */
 .hero{color:#fff;position:relative;overflow:hidden;padding:84px 0 100px;background:var(--navy)}
 .hero-bg{position:absolute;inset:-12% 0;z-index:0;will-change:transform}
 .hero-bg-img{
   position:absolute;inset:0;
   background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;
   animation:kenBurns 22s ease-in-out infinite alternate;
-  filter:saturate(.9);
+  opacity:1;
 }
 .hero-bg-fallback{position:absolute;inset:0;background:linear-gradient(130deg,var(--navy) 0%,var(--navy-2) 55%,var(--navy-3) 100%)}
 @keyframes kenBurns{
@@ -127,35 +128,35 @@ button{font-family:inherit;cursor:pointer}
   50%{transform:scale(1.16) translate(-2.2%,-1.6%)}
   100%{transform:scale(1.07) translate(2%,1.4%)}
 }
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(125deg,rgba(11,22,38,.95) 0%,rgba(13,26,44,.86) 45%,rgba(20,42,68,.72) 100%)}
-.hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(125deg,rgba(11,22,38,.68) 0%,rgba(13,26,44,.45) 45%,rgba(20,42,68,.28) 100%)}
+.hero .container{position:relative;z-index:2}
+.hero-left{max-width:780px;position:relative;z-index:2}
 .gear-deco{position:absolute;fill:#fff;opacity:.05;z-index:1;animation:spinSlow 40s linear infinite;pointer-events:none}
 .gear-deco.g1{width:420px;height:420px;top:-120px;right:-100px;animation-duration:55s}
 .gear-deco.g2{width:280px;height:280px;bottom:-90px;left:-70px;animation-direction:reverse;animation-duration:38s}
 .hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(217,35,50,.18);border:1px solid rgba(217,35,50,.55);color:#ffb3ba;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:22px}
 .hero-chip svg{width:14px;height:14px;fill:var(--red)}
-.hero h1{font-size:clamp(42px,5.4vw,68px);font-weight:800;letter-spacing:1px}
+.hero h1{font-size:clamp(42px,5.4vw,68px);font-weight:800;letter-spacing:1px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
 .hero h1 span{color:var(--red)}
-.hero-sub{margin:20px 0 30px;font-size:17.5px;color:#c4d0de;max-width:540px}
+.hero-sub{margin:20px 0 28px;font-size:17.5px;color:#e2eaf3;max-width:600px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
 .hero-sub strong{color:#fff}
+
+/* ===== DESPLEGABLE DE REPUESTOS EN HERO ===== */
+.hero-buscador{background:rgba(11,22,38,.45);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);border-radius:16px;padding:20px 22px;max-width:640px;margin-bottom:30px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.hero-buscador label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;letter-spacing:1.2px;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.hb-row{display:flex;gap:12px}
+.hb-row .select-wrap{flex:1}
+.hb-row select{width:100%;padding:14px 44px 14px 16px;border-radius:10px;border:2px solid transparent;font-family:inherit;font-size:15.5px;font-weight:600;background:#fff;color:var(--text);appearance:none;cursor:pointer;outline:none;transition:.2s}
+.hb-row select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(217,35,50,.25)}
+.hb-row .btn{white-space:nowrap}
+
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
 .hero-features{display:flex;gap:12px;flex-wrap:wrap}
-.hf{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:600;color:#dce6f1;backdrop-filter:blur(3px)}
+.hf{display:flex;align-items:center;gap:8px;background:rgba(11,22,38,.5);border:1px solid rgba(255,255,255,.2);padding:9px 16px;border-radius:999px;font-size:13.5px;font-weight:600;color:#e7eef6;backdrop-filter:blur(3px)}
 .hf span{font-size:16px}
-.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);border-radius:20px;padding:30px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.hero-card h3{font-size:24px;letter-spacing:1px;margin-bottom:6px}
-.hero-card p{font-size:13.5px;color:#aebdcd;margin-bottom:18px}
-.qrow{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:13px 16px;margin-bottom:10px;cursor:pointer;transition:.25s;width:100%;text-align:left;color:#fff}
-.qrow:hover{background:rgba(217,35,50,.16);border-color:rgba(217,35,50,.6);transform:translateX(6px)}
-.qrow .qicon{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
-.qrow .qt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:1px;text-transform:uppercase;display:block}
-.qrow .qs{font-size:12px;color:#a3b3c4}
-.qrow .qarrow{margin-left:auto;color:var(--red);font-weight:700;font-size:18px}
 
 /* ============ CARRUSEL ============ */
 #galeria{background:linear-gradient(180deg,var(--navy) 0%,#132339 100%);padding:80px 0 90px;position:relative;overflow:hidden}
-#galeria .section-head h2{color:#fff}
-#galeria .section-head p{color:#a9b9ca}
 .carrusel{position:relative;max-width:980px;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5);background:var(--navy-2);border:1px solid rgba(255,255,255,.1)}
 .carrusel-viewport{overflow:hidden}
 .carrusel-track{display:flex;transition:transform .7s cubic-bezier(.65,.05,.36,1);will-change:transform}
@@ -207,7 +208,7 @@ button{font-family:inherit;cursor:pointer}
 .fgroup textarea{resize:vertical;min-height:90px}
 .fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(217,35,50,.1)}
 .select-wrap{position:relative}
-.select-wrap::after{content:"";position:absolute;right:18px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-top-color:var(--red);pointer-events:none}
+.select-wrap::after{content:"";position:absolute;right:18px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-top-color:var(--red);pointer-events:none;z-index:2}
 .fgroup select{cursor:pointer;padding-right:44px;font-weight:600}
 .field-error{display:none;color:var(--red);font-size:12.5px;font-weight:600}
 .fgroup.error input,.fgroup.error select,.fgroup.error textarea{border-color:var(--red)}
@@ -224,8 +225,12 @@ button{font-family:inherit;cursor:pointer}
 .pop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
 .pop-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center;cursor:pointer;transition:.25s}
 .pop-card:hover{border-color:var(--red);transform:translateY(-6px);box-shadow:var(--shadow)}
-.pop-icon{width:62px;height:62px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,rgba(217,35,50,.12),rgba(27,58,92,.12));display:flex;align-items:center;justify-content:center;font-size:29px;transition:.25s}
-.pop-card:hover .pop-icon{background:linear-gradient(135deg,var(--red),var(--red-dark));transform:scale(1.08) rotate(-6deg)}
+/* Tarjetas con imagen real del repuesto */
+.pop-icon{width:92px;height:92px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,rgba(217,35,50,.12),rgba(27,58,92,.12));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:.25s;border:3px solid var(--line)}
+.pop-icon img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:2;transition:transform .4s}
+.pop-card:hover .pop-icon{border-color:var(--red);transform:scale(1.05)}
+.pop-card:hover .pop-icon img{transform:scale(1.14)}
+.pop-emoji{font-size:36px;z-index:1}
 .pop-card h4{font-size:17.5px;letter-spacing:.5px;color:var(--navy)}
 .pop-card .pop-go{display:inline-block;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--red);letter-spacing:1px;text-transform:uppercase}
 
@@ -239,19 +244,23 @@ button{font-family:inherit;cursor:pointer}
 .banner-ofertas{background:linear-gradient(120deg,#e2303f 0%,#a81624 70%,#7c0f1b 100%)}
 .banner-novedades{background:linear-gradient(120deg,#16324f 0%,#1d4e89 65%,#112233 100%)}
 
-/* ============ MARCAS ============ */
+/* ============ MARCAS CON LOGOS REALES ============ */
 #marcas{background:var(--white)}
 .marcas-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.marca{background:#fbfcfe;border:2px solid var(--line);border-radius:12px;padding:22px 10px;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:1.5px;color:var(--navy);transition:.25s;cursor:default}
-.marca:hover{border-color:var(--red);color:var(--red);transform:translateY(-4px);box-shadow:var(--shadow)}
+.marca{background:#fbfcfe;border:2px solid var(--line);border-radius:12px;padding:20px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:.25s;cursor:default}
+.marca:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:var(--shadow)}
+.marca-logo{height:48px;width:auto;max-width:110px;object-fit:contain;transition:transform .3s}
+.marca:hover .marca-logo{transform:scale(1.14)}
+.marca span{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:1.5px;color:var(--navy);text-transform:uppercase;transition:.25s}
+.marca:hover span{color:var(--red)}
 .marcas-note{text-align:center;color:var(--muted);font-size:14px;margin-top:26px}
 .marcas-note a{color:var(--red);font-weight:700}
 
 /* ============ UBICACION ============ */
 #ubicacion{color:#fff;position:relative;overflow:hidden;background:var(--navy)}
 .ubi-bg{position:absolute;inset:-10% 0;z-index:0}
-.ubi-bg-img{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;animation:kenBurns 26s ease-in-out infinite alternate-reverse;opacity:.5}
-.ubi-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(130deg,rgba(11,22,38,.96) 0%,rgba(18,35,58,.9) 55%,rgba(27,58,92,.82) 100%)}
+.ubi-bg-img{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;animation:kenBurns 26s ease-in-out infinite alternate-reverse;opacity:1}
+.ubi-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(130deg,rgba(11,22,38,.92) 0%,rgba(18,35,58,.82) 55%,rgba(27,58,92,.68) 100%)}
 .ubi-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;z-index:2}
 .ubi-left .kicker{color:#ff8a94;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
 .ubi-left h2{font-size:clamp(32px,3.6vw,44px);font-weight:800;margin:10px 0 22px}
@@ -287,16 +296,17 @@ button{font-family:inherit;cursor:pointer}
 
 /* ============ CONTACTO ============ */
 #contacto{background:var(--white)}
-.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:56px}
-.ccard{background:#fbfcfe;border:2px solid var(--line);border-radius:14px;padding:26px 20px;text-align:center;transition:.25s;display:block}
+.contact-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-bottom:56px}
+.ccard{background:#fbfcfe;border:2px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;transition:.25s;display:block}
 .ccard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .ccard .cicon{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .ccard .cicon svg{width:28px;height:28px;fill:#fff}
 .ccard h4{font-size:19px;letter-spacing:1px;color:var(--navy);margin-bottom:6px}
-.ccard p{font-size:13.5px;color:var(--muted);margin-bottom:12px;word-break:break-word}
+.ccard p{font-size:13px;color:var(--muted);margin-bottom:12px;word-break:break-word}
 .ccard .clink{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
 .ccard.wa{border-color:rgba(37,211,102,.35)} .ccard.wa .cicon{background:var(--wa)} .ccard.wa .clink{color:var(--wa-dark)} .ccard.wa:hover{border-color:var(--wa)}
 .ccard.fb{border-color:rgba(24,119,242,.35)} .ccard.fb .cicon{background:var(--fb)} .ccard.fb .clink{color:var(--fb)} .ccard.fb:hover{border-color:var(--fb)}
+.ccard.ig{border-color:rgba(214,41,118,.35)} .ccard.ig .cicon{background:linear-gradient(45deg,#feda75 0%,#fa7e1e 25%,#d62976 55%,#962fbf 80%,#4f5bd5 100%)} .ccard.ig .clink{color:var(--ig)} .ccard.ig:hover{border-color:var(--ig)}
 .ccard.map{border-color:rgba(217,35,50,.35)} .ccard.map .cicon{background:var(--red)} .ccard.map .clink{color:var(--red)} .ccard.map:hover{border-color:var(--red)}
 .msg-card{max-width:880px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px}
 .msg-card h3{font-size:26px;color:var(--navy);margin-bottom:4px}
@@ -307,7 +317,7 @@ button{font-family:inherit;cursor:pointer}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:44px}
 .footer h4{color:#fff;font-size:20px;letter-spacing:2px;margin-bottom:18px;position:relative;padding-bottom:10px}
 .footer h4::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:var(--red);border-radius:2px}
-.footer .f-logo{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.footer .f-logo{display:flex;align-items:center;gap:13px;margin-bottom:16px;cursor:pointer}
 .footer .f-logo .logo-badge{width:56px;height:56px}
 .footer .f-logo .logo-badge .gear-fallback{width:30px;height:30px}
 .footer .f-logo .lt{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:23px;color:#fff;letter-spacing:1px;line-height:1}
@@ -316,25 +326,25 @@ button{font-family:inherit;cursor:pointer}
 .footer a:hover{color:#fff}
 .footer .f-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;line-height:1.5}
 .footer .f-item svg{width:15px;height:15px;fill:var(--red);flex-shrink:0;margin-top:4px}
-.f-socials{display:flex;gap:10px;margin-top:16px}
-.f-socials a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:.25s}
-.f-socials a svg{width:18px;height:18px;fill:#fff}
-.f-socials a:hover{transform:translateY(-3px)}
-.f-socials a.s-wa:hover{background:var(--wa)}
-.f-socials a.s-fb:hover{background:var(--fb)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;text-align:center;font-size:13px;color:#7487a0}
+
+/* ===== REDES SOCIALES ORDENADAS EN LA PARTE INFERIOR ===== */
+.footer-socials{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding:28px 0 24px}
+.fs-title{width:100%;text-align:center;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.fs-link{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:10px 20px;border-radius:999px;color:#dce6f1;font-size:13.5px;font-weight:600;transition:.28s}
+.fs-link svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.fs-link:hover{transform:translateY(-4px);color:#fff;box-shadow:0 10px 22px rgba(0,0,0,.35)}
+.fs-wa:hover{background:var(--wa);border-color:var(--wa)}
+.fs-fb:hover{background:var(--fb);border-color:var(--fb)}
+.fs-ig:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);border-color:#d62976}
+.footer-bottom{padding:0 0 24px;text-align:center;font-size:13px;color:#7487a0}
 .footer-bottom b{color:#c8d4e2}
 
-/* ============ FLOTANTES ============ */
+/* ============ FLOTANTE (SOLO UN WHATSAPP) ============ */
 .floating{position:fixed;right:18px;bottom:18px;z-index:1000;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
-.fab{position:relative;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:.25s}
-.fab svg{width:30px;height:30px;fill:#fff;z-index:2}
+.fab{position:relative;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:.25s;background:var(--wa)}
+.fab svg{width:34px;height:34px;fill:#fff;z-index:2}
 .fab:hover{transform:scale(1.1)}
-.fab-wa1{background:var(--wa);width:64px;height:64px}
-.fab-wa1 svg{width:34px;height:34px}
-.fab-wa2{background:var(--wa)}
-.fab-fb{background:var(--fb)}
-.fab-wa1::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:fabPulse 2s ease-out infinite;z-index:0}
+.fab::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:fabPulse 2s ease-out infinite;z-index:0}
 @keyframes fabPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.75);opacity:0}}
 .fab .fab-tip{position:absolute;right:calc(100% + 14px);top:50%;transform:translateY(-50%) translateX(8px);background:var(--navy);color:#fff;font-size:12.5px;font-weight:600;white-space:nowrap;padding:8px 14px;border-radius:8px;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .fab .fab-tip::after{content:"";position:absolute;left:100%;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:var(--navy)}
@@ -352,13 +362,11 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:1024px){
   .pop-grid{grid-template-columns:repeat(3,1fr)}
   .marcas-grid{grid-template-columns:repeat(4,1fr)}
-  .contact-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:repeat(3,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:900px){
-  .hero .container{grid-template-columns:1fr;gap:44px}
   .hero{padding:60px 0 76px}
-  .hero-card{max-width:560px}
   .ubi-grid{grid-template-columns:1fr;gap:40px}
   .map-mock{height:320px}
   .banners{grid-template-columns:1fr}
@@ -377,11 +385,11 @@ button{font-family:inherit;cursor:pointer}
   .footer-grid{grid-template-columns:1fr}
   .form-card,.msg-card{padding:24px}
   .hero-btns .btn{width:100%}
+  .hb-row{flex-direction:column}
   .pad{padding:64px 0}
   #galeria{padding:60px 0 70px}
-  .fab{width:52px;height:52px}
-  .fab-wa1{width:58px;height:58px}
-  .fab svg{width:26px;height:26px}
+  .fab{width:58px;height:58px}
+  .fab svg{width:30px;height:30px}
   .logo-badge{width:52px;height:52px}
   .logo-text .l2{font-size:24px}
   .carrusel-btn{width:40px;height:40px;font-size:22px}
@@ -414,10 +422,10 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
-<!-- ================= HEADER (LOGO CIRCULAR CON EFECTO) ================= -->
+<!-- ================= HEADER (LOGO CIRCULAR → SIEMPRE ARRIBA) ================= -->
 <header class="header" id="header">
   <div class="container">
-    <a href="#inicio" class="logo" aria-label="Autopartes San Martín - Inicio">
+    <a href="#inicio" class="logo js-to-top" aria-label="Autopartes San Martín - Ir arriba">
       <span class="logo-badge" title="Autopartes San Martín">
         <svg class="gear-fallback" viewBox="0 0 100 100" aria-hidden="true">
           <g>
@@ -463,9 +471,8 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </header>
 
-<!-- ================= HERO (FONDO CON MOVIMIENTO) ================= -->
+<!-- ================= HERO (FONDO NÍTIDO + DESPLEGABLE ARRIBA) ================= -->
 <section class="hero" id="inicio">
-  <!-- Fondo con imagen + efecto Ken Burns + parallax -->
   <div class="hero-bg" id="heroBg">
     <div class="hero-bg-fallback"></div>
     <div class="hero-bg-img" id="heroBgImg"></div>
@@ -482,15 +489,27 @@ button{font-family:inherit;cursor:pointer}
       </span>
       <h1>Desarmadero y<br><span>Autopartes</span> Originales</h1>
       <p class="hero-sub">En <strong>AUTOPARTES SAN MARTÍN</strong> encontrás motores, cajas, puertas, eléctricos y todo tipo de repuestos usados originales. <strong>Consultanos por WhatsApp</strong> y conseguí la pieza que necesitás.</p>
+
+      <!-- DESPLEGABLE DE REPUESTOS EN LA PARTE SUPERIOR -->
+      <div class="hero-buscador">
+        <label for="heroSelect">🔎 ¿Qué repuesto necesitás?</label>
+        <div class="hb-row">
+          <div class="select-wrap">
+            <select id="heroSelect" aria-label="Elegí el repuesto que necesitás">
+              <option value="" selected disabled>Seleccione su repuesto…</option>
+              <!-- Las opciones se cargan automáticamente desde el catálogo completo -->
+            </select>
+          </div>
+          <button type="button" class="btn btn-red" id="heroConsultar">🔧 Consultar ahora</button>
+        </div>
+      </div>
+
       <div class="hero-btns">
-        <a href="#repuestos" class="btn btn-red">
-          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-          Buscar mi repuesto
-        </a>
-        <a href="https://wa.me/542901490255?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20consultar%20por%20un%20repuesto%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" class="btn btn-wa">
+        <a href="#repuestos" class="btn btn-wa">
           <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-          2901 49-0255
+          WhatsApp 2901 49-0255
         </a>
+        <a href="#galeria" class="btn btn-outline">📸 Ver galería</a>
       </div>
       <div class="hero-features">
         <span class="hf"><span>🛡️</span> Repuestos con garantía</span>
@@ -498,36 +517,6 @@ button{font-family:inherit;cursor:pointer}
         <span class="hf"><span>💳</span> Efectivo y tarjeta</span>
         <span class="hf"><span>⭐</span> Atención personalizada</span>
       </div>
-    </div>
-
-    <div class="hero-card" data-reveal>
-      <h3>¿Qué repuesto necesitás?</h3>
-      <p>Elegí una categoría y te llevamos directo al formulario de consulta por WhatsApp.</p>
-      <button class="qrow" data-producto="MOTOR SEMI ARMADO">
-        <span class="qicon">🔩</span>
-        <span><span class="qt">Motores</span><span class="qs">Motores y motores semi armados</span></span>
-        <span class="qarrow">›</span>
-      </button>
-      <button class="qrow" data-producto="CAJA DE VELOCIDADES">
-        <span class="qicon">⚙️</span>
-        <span><span class="qt">Cajas y transmisión</span><span class="qs">Cajas de velocidad y transferencia</span></span>
-        <span class="qarrow">›</span>
-      </button>
-      <button class="qrow" data-producto="PUERTA DELANTERA IZQUIERDA">
-        <span class="qicon">🚪</span>
-        <span><span class="qt">Carrocería</span><span class="qs">Puertas, capot, portón y tapas</span></span>
-        <span class="qarrow">›</span>
-      </button>
-      <button class="qrow" data-producto="ALTERNADOR">
-        <span class="qicon">⚡</span>
-        <span><span class="qt">Eléctricos</span><span class="qs">Alternador, arranque, bobinas y módulos</span></span>
-        <span class="qarrow">›</span>
-      </button>
-      <button class="qrow" data-producto="TURBO COMPRESOR">
-        <span class="qicon">🌀</span>
-        <span><span class="qt">Turbo y más</span><span class="qs">Turbocompresores y periféricos</span></span>
-        <span class="qarrow">›</span>
-      </button>
     </div>
   </div>
 </section>
@@ -656,17 +645,42 @@ button{font-family:inherit;cursor:pointer}
       </div>
     </form>
 
+    <!-- ===== REPUESTOS MÁS BUSCADOS CON IMÁGENES REALES ===== -->
     <h3 class="pop-title" data-reveal>Repuestos más buscados</h3>
     <p class="pop-sub" data-reveal>Hacé clic en una tarjeta para cargar el repuesto en el formulario.</p>
     <div class="pop-grid" data-reveal>
-      <button class="pop-card" data-producto="ALTERNADOR"><span class="pop-icon">⚡</span><h4>Alternador</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="CAJA DE VELOCIDADES"><span class="pop-icon">⚙️</span><h4>Caja de velocidades</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="MOTOR SEMI ARMADO"><span class="pop-icon">🔩</span><h4>Motor semi armado</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="TURBO COMPRESOR"><span class="pop-icon">🌀</span><h4>Turbo compresor</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="MOTOR DE ARRANQUE"><span class="pop-icon">🔋</span><h4>Motor de arranque</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="BOMBA DE NAFTA"><span class="pop-icon">⛽</span><h4>Bomba de nafta</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="CAPOT"><span class="pop-icon">🚘</span><h4>Capot</h4><span class="pop-go">Consultar →</span></button>
-      <button class="pop-card" data-producto="VOLANTE DE MOTOR"><span class="pop-icon">🛞</span><h4>Volante de motor</h4><span class="pop-go">Consultar →</span></button>
+      <button class="pop-card" data-producto="ALTERNADOR">
+        <span class="pop-icon"><img src="ALTERNADOR.jpg" alt="Alternador" onerror="this.style.display='none'"><span class="pop-emoji">⚡</span></span>
+        <h4>Alternador</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="CAJA DE VELOCIDADES">
+        <span class="pop-icon"><img src="CAJA%20DE%20VELOCIDADES.jpg" alt="Caja de velocidades" onerror="this.style.display='none'"><span class="pop-emoji">⚙️</span></span>
+        <h4>Caja de velocidades</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="MOTOR SEMI ARMADO">
+        <span class="pop-icon"><img src="MOTOR%20SEMI%20ARMADO.jpg" alt="Motor semi armado" onerror="this.style.display='none'"><span class="pop-emoji">🔩</span></span>
+        <h4>Motor semi armado</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="TURBO COMPRESOR">
+        <span class="pop-icon"><img src="TURBO%20COMPRESOR.jpg" alt="Turbo compresor" onerror="this.style.display='none'"><span class="pop-emoji">🌀</span></span>
+        <h4>Turbo compresor</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="MOTOR DE ARRANQUE">
+        <span class="pop-icon"><img src="MOTOR%20DE%20ARRANQUE.jpg" alt="Motor de arranque" onerror="this.style.display='none'"><span class="pop-emoji">🔋</span></span>
+        <h4>Motor de arranque</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="BOMBA DE NAFTA">
+        <span class="pop-icon"><img src="BOMBA%20DE%20NAFTA.jpg" alt="Bomba de nafta" onerror="this.style.display='none'"><span class="pop-emoji">⛽</span></span>
+        <h4>Bomba de nafta</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="CAPOT">
+        <span class="pop-icon"><img src="CAPOT.jpg" alt="Capot" onerror="this.style.display='none'"><span class="pop-emoji">🚘</span></span>
+        <h4>Capot</h4><span class="pop-go">Consultar →</span>
+      </button>
+      <button class="pop-card" data-producto="VOLANTE DE MOTOR">
+        <span class="pop-icon"><img src="VOLANTE%20DE%20MOTOR.jpg" alt="Volante de motor" onerror="this.style.display='none'"><span class="pop-emoji">🛞</span></span>
+        <h4>Volante de motor</h4><span class="pop-go">Consultar →</span>
+      </button>
     </div>
   </div>
 </section>
@@ -691,7 +705,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= MARCAS ================= -->
+<!-- ================= MARCAS CON LOGOS REALES DE INTERNET ================= -->
 <section id="marcas" class="pad" style="padding-top:20px">
   <div class="container">
     <div class="section-head" data-reveal>
@@ -700,18 +714,54 @@ button{font-family:inherit;cursor:pointer}
       <p>Repuestos para las marcas más populares de Argentina. Si tu marca no está en la lista, ¡consultanos igual!</p>
     </div>
     <div class="marcas-grid" data-reveal>
-      <div class="marca">Toyota</div>
-      <div class="marca">Ford</div>
-      <div class="marca">Chevrolet</div>
-      <div class="marca">Volkswagen</div>
-      <div class="marca">Fiat</div>
-      <div class="marca">Renault</div>
-      <div class="marca">Peugeot</div>
-      <div class="marca">Citroën</div>
-      <div class="marca">Honda</div>
-      <div class="marca">Nissan</div>
-      <div class="marca">Jeep</div>
-      <div class="marca">Dodge</div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/toyota.com?size=128" alt="Toyota" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=toyota.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Toyota</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/ford.com?size=128" alt="Ford" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=ford.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Ford</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/chevrolet.com?size=128" alt="Chevrolet" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=chevrolet.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Chevrolet</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/volkswagen.com?size=128" alt="Volkswagen" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=volkswagen.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Volkswagen</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/fiat.com?size=128" alt="Fiat" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=fiat.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Fiat</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/renault.com?size=128" alt="Renault" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=renault.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Renault</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/peugeot.com?size=128" alt="Peugeot" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=peugeot.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Peugeot</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/citroen.com?size=128" alt="Citroën" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=citroen.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Citroën</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/honda.com?size=128" alt="Honda" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=honda.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Honda</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/nissan.com?size=128" alt="Nissan" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=nissan.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Nissan</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/jeep.com?size=128" alt="Jeep" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=jeep.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Jeep</span>
+      </div>
+      <div class="marca">
+        <img class="marca-logo" src="https://logo.clearbit.com/dodge.com?size=128" alt="Dodge" loading="lazy" onerror="if(!this.dataset.fb){this.dataset.fb=1;this.src='https://www.google.com/s2/favicons?domain=dodge.com&amp;sz=128';}else{this.style.display='none';}">
+        <span>Dodge</span>
+      </div>
     </div>
     <p class="marcas-note" data-reveal>¿No ves tu marca? <a href="https://wa.me/542901414618?text=%F0%9F%9A%97%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Busco%20un%20repuesto%20para%20mi%20veh%C3%ADculo%20%F0%9F%94%A7" target="_blank" rel="noopener">Consultanos por WhatsApp →</a></p>
   </div>
@@ -776,7 +826,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= CONTACTO ================= -->
+<!-- ================= CONTACTO (TARJETAS INCLUIDO INSTAGRAM) ================= -->
 <section id="contacto" class="pad">
   <div class="container">
     <div class="section-head" data-reveal>
@@ -803,6 +853,12 @@ button{font-family:inherit;cursor:pointer}
         <h4>Facebook</h4>
         <p>Desarmadero San Martín</p>
         <span class="clink">Visitar página →</span>
+      </a>
+      <a class="ccard ig" href="https://www.instagram.com/desarmaderosanmartin/" target="_blank" rel="noopener">
+        <span class="cicon"><svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></span>
+        <h4>Instagram</h4>
+        <p>@desarmaderosanmartin</p>
+        <span class="clink">Seguinos →</span>
       </a>
       <a class="ccard map" href="https://maps.app.goo.gl/JCjH18MmTvBQJLxQ7" target="_blank" rel="noopener">
         <span class="cicon"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
@@ -839,24 +895,19 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER (REDES ORDENADAS ABAJO) ================= -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="f-logo">
+        <a href="#inicio" class="f-logo js-to-top" aria-label="Ir arriba">
           <span class="logo-badge">
             <svg class="gear-fallback" viewBox="0 0 100 100" aria-hidden="true"><g><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(0 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(45 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(90 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(135 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(180 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(225 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(270 50 50)"/><rect x="45" y="0" width="10" height="20" rx="2" transform="rotate(315 50 50)"/><circle cx="50" cy="50" r="31" fill="none" stroke="currentColor" stroke-width="17"/></g></svg>
             <img class="logo-img" src="LOGO2%20DESARMADERO.png" alt="Logo Desarmadero San Martín" onerror="this.style.display='none'">
           </span>
           <span class="lt">SAN MARTÍN<small>AUTOPARTES</small></span>
-        </div>
+        </a>
         <p>Desarmadero y venta de autopartes usadas originales en Ushuaia, Tierra del Fuego. Motores, cajas, carrocería, eléctricos y mucho más.</p>
-        <div class="f-socials">
-          <a class="s-wa" href="https://wa.me/542901490255" target="_blank" rel="noopener" aria-label="WhatsApp 1"><svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-          <a class="s-wa" href="https://wa.me/542901414618" target="_blank" rel="noopener" aria-label="WhatsApp 2"><svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
-          <a class="s-fb" href="https://www.facebook.com/people/Desarmadero-SanMartin/61556750067115/?rdid=TpS1rYmUgs5mTub6&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EJit1cazc%2F" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.7 226.4 209.3 245V327.7h-63V256h63v-54.6c0-62.2 37-96.5 93.7-96.5 27.1 0 55.5 4.8 55.5 4.8v61h-31.3c-30.8 0-40.4 19.1-40.4 38.7V256h68.8l-11 71.7h-57.8V501C413.3 482.4 504 379.8 504 256z"/></svg></a>
-        </div>
       </div>
 
       <div>
@@ -899,26 +950,44 @@ button{font-family:inherit;cursor:pointer}
           <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.7 226.4 209.3 245V327.7h-63V256h63v-54.6c0-62.2 37-96.5 93.7-96.5 27.1 0 55.5 4.8 55.5 4.8v61h-31.3c-30.8 0-40.4 19.1-40.4 38.7V256h68.8l-11 71.7h-57.8V501C413.3 482.4 504 379.8 504 256z"/></svg>
           <span><a href="https://www.facebook.com/people/Desarmadero-SanMartin/61556750067115/?rdid=TpS1rYmUgs5mTub6&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EJit1cazc%2F" target="_blank" rel="noopener">Facebook: Desarmadero San Martín</a></span>
         </div>
+        <div class="f-item">
+          <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          <span><a href="https://www.instagram.com/desarmaderosanmartin/" target="_blank" rel="noopener">Instagram: @desarmaderosanmartin</a></span>
+        </div>
       </div>
     </div>
+
+    <!-- REDES SOCIALES BIEN ORDENADAS EN LA PARTE INFERIOR -->
+    <div class="footer-socials">
+      <span class="fs-title">Seguinos en nuestras redes</span>
+      <a class="fs-link fs-wa" href="https://wa.me/542901490255?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" aria-label="WhatsApp 2901 49-0255">
+        <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        <span>WhatsApp 2901 49-0255</span>
+      </a>
+      <a class="fs-link fs-wa" href="https://wa.me/542901414618?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" aria-label="WhatsApp 2901 41-4618">
+        <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+        <span>WhatsApp 2901 41-4618</span>
+      </a>
+      <a class="fs-link fs-fb" href="https://www.facebook.com/people/Desarmadero-SanMartin/61556750067115/?rdid=TpS1rYmUgs5mTub6&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EJit1cazc%2F" target="_blank" rel="noopener" aria-label="Facebook Desarmadero San Martín">
+        <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.7 226.4 209.3 245V327.7h-63V256h63v-54.6c0-62.2 37-96.5 93.7-96.5 27.1 0 55.5 4.8 55.5 4.8v61h-31.3c-30.8 0-40.4 19.1-40.4 38.7V256h68.8l-11 71.7h-57.8V501C413.3 482.4 504 379.8 504 256z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a class="fs-link fs-ig" href="https://www.instagram.com/desarmaderosanmartin/" target="_blank" rel="noopener" aria-label="Instagram Desarmadero San Martín">
+        <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        <span>@desarmaderosanmartin</span>
+      </a>
+    </div>
+
     <div class="footer-bottom">
       © 2026 <b>AUTOPARTES SAN MARTÍN</b> — Desarmadero y Autopartes • Ushuaia, Tierra del Fuego, Argentina. Todos los derechos reservados.
     </div>
   </div>
 </footer>
 
-<!-- ================= BOTONES FLOTANTES ================= -->
+<!-- ================= SOLO UN BOTÓN FLOTANTE DE WHATSAPP ================= -->
 <div class="floating">
-  <a class="fab fab-fb" href="https://www.facebook.com/people/Desarmadero-SanMartin/61556750067115/?rdid=TpS1rYmUgs5mTub6&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1EJit1cazc%2F" target="_blank" rel="noopener" aria-label="Facebook Desarmadero San Martín">
-    <span class="fab-tip">📘 Facebook — Desarmadero San Martín</span>
-    <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.7 226.4 209.3 245V327.7h-63V256h63v-54.6c0-62.2 37-96.5 93.7-96.5 27.1 0 55.5 4.8 55.5 4.8v61h-31.3c-30.8 0-40.4 19.1-40.4 38.7V256h68.8l-11 71.7h-57.8V501C413.3 482.4 504 379.8 504 256z"/></svg>
-  </a>
-  <a class="fab fab-wa2" href="https://wa.me/542901414618?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" aria-label="WhatsApp 2901 41-4618">
-    <span class="fab-tip">💬 WhatsApp 2: 2901 41-4618</span>
-    <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-  </a>
-  <a class="fab fab-wa1" href="https://wa.me/542901490255?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" aria-label="WhatsApp 2901 49-0255">
-    <span class="fab-tip">💬 WhatsApp 1: 2901 49-0255</span>
+  <a class="fab" href="https://wa.me/542901490255?text=%F0%9F%91%8B%20%C2%A1Hola%20AUTOPARTES%20SAN%20MART%C3%8DN!%20Quiero%20hacer%20una%20consulta%20%F0%9F%9A%97%F0%9F%94%A7" target="_blank" rel="noopener" aria-label="WhatsApp 2901 49-0255">
+    <span class="fab-tip">💬 WhatsApp: 2901 49-0255</span>
     <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
   </a>
 </div>
@@ -950,17 +1019,17 @@ button{font-family:inherit;cursor:pointer}
     toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 3800);
   }
 
-  /* ====== HEADER SCROLL + NAV MÓVIL ====== */
+  /* ====== HEADER SCROLL + PARALLAX FONDO ====== */
   var header = document.getElementById('header');
   var heroBg = document.getElementById('heroBg');
   window.addEventListener('scroll', function(){
     header.classList.toggle('scrolled', window.scrollY > 10);
-    /* Parallax del fondo con movimiento */
     if(window.scrollY < window.innerHeight * 1.6){
       heroBg.style.transform = 'translateY(' + (window.scrollY * 0.32) + 'px)';
     }
   }, { passive:true });
 
+  /* ====== NAV MÓVIL ====== */
   var hamburger = document.getElementById('hamburger');
   var mainNav = document.getElementById('mainNav');
   hamburger.addEventListener('click', function(){
@@ -970,6 +1039,16 @@ button{font-family:inherit;cursor:pointer}
   });
   mainNav.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
+      mainNav.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
+  /* ====== CLIC EN LOGO → SIEMPRE A LA PARTE SUPERIOR ====== */
+  document.querySelectorAll('.js-to-top').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      window.scrollTo({ top:0, behavior:'smooth' });
       mainNav.classList.remove('open');
       hamburger.classList.remove('open');
     });
@@ -1002,7 +1081,6 @@ button{font-family:inherit;cursor:pointer}
   var contador = document.getElementById('carruselCount');
   var carrusel = document.getElementById('carrusel');
 
-  /* Crear puntos (dots) */
   slides.forEach(function(_, i){
     var d = document.createElement('button');
     d.className = 'dot' + (i === 0 ? ' active' : '');
@@ -1026,22 +1104,17 @@ button{font-family:inherit;cursor:pointer}
 
   document.getElementById('btnNext').addEventListener('click', function(){ slideSiguiente(); reiniciarAuto(); });
   document.getElementById('btnPrev').addEventListener('click', function(){ slideAnterior(); reiniciarAuto(); });
-
-  /* Pausar al pasar el mouse */
   carrusel.addEventListener('mouseenter', function(){ clearInterval(autoTimer); });
   carrusel.addEventListener('mouseleave', iniciarAuto);
 
-  /* Deslizar con el dedo (touch) */
-  var touchStartX = 0, touchEndX = 0;
+  var touchStartX = 0;
   carrusel.addEventListener('touchstart', function(ev){ touchStartX = ev.changedTouches[0].screenX; clearInterval(autoTimer); }, { passive:true });
   carrusel.addEventListener('touchend', function(ev){
-    touchEndX = ev.changedTouches[0].screenX;
-    var diff = touchStartX - touchEndX;
+    var diff = touchStartX - ev.changedTouches[0].screenX;
     if(Math.abs(diff) > 50){ diff > 0 ? slideSiguiente() : slideAnterior(); }
     iniciarAuto();
   }, { passive:true });
 
-  /* Flechas del teclado */
   document.addEventListener('keydown', function(ev){
     var rect = carrusel.getBoundingClientRect();
     var visible = rect.top < window.innerHeight && rect.bottom > 0;
@@ -1129,7 +1202,7 @@ button{font-family:inherit;cursor:pointer}
     mostrarToast('✅ ¡Abriendo WhatsApp con tu consulta armada!');
   });
 
-  /* ====== SELECCIÓN RÁPIDA DESDE TARJETAS / HERO / FOOTER ====== */
+  /* ====== SELECCIÓN RÁPIDA (TARJETAS / HERO / FOOTER) ====== */
   function elegirProducto(nombreProducto){
     var opciones = Array.prototype.slice.call(productoSelect.options);
     var encontrado = opciones.some(function(op){ return op.value === nombreProducto; });
@@ -1146,6 +1219,27 @@ button{font-family:inherit;cursor:pointer}
       ev.preventDefault();
       elegirProducto(el.getAttribute('data-producto'));
     });
+  });
+
+  /* ====== DESPLEGABLE DE REPUESTOS EN EL HERO ====== */
+  var heroSelect = document.getElementById('heroSelect');
+  Array.prototype.forEach.call(productoSelect.options, function(op, i){
+    if(i === 0) return; /* saltear el placeholder */
+    var nueva = document.createElement('option');
+    nueva.value = op.value;
+    nueva.textContent = op.textContent;
+    heroSelect.appendChild(nueva);
+  });
+  heroSelect.addEventListener('change', function(){
+    if(heroSelect.value){ elegirProducto(heroSelect.value); }
+  });
+  document.getElementById('heroConsultar').addEventListener('click', function(){
+    if(!heroSelect.value){
+      mostrarToast('⚠️ Primero elegí un repuesto del desplegable.');
+      heroSelect.focus();
+      return;
+    }
+    elegirProducto(heroSelect.value);
   });
 
   /* ====== BOTONES OFERTAS / NOVEDADES ====== */
@@ -1212,3 +1306,4 @@ button{font-family:inherit;cursor:pointer}
 </script>
 </body>
 </html>
+
