@@ -2,7 +2,8 @@
 <html lang="es-AR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b1626">
 <title>Autopartes San Martín | Desarmadero y Autopartes en Ushuaia, Tierra del Fuego</title>
 
 <!-- ============ SEO / DATOS PARA IA DE GOOGLE ============ -->
@@ -49,7 +50,6 @@
   "logo": "LOGO2 DESARMADERO.png",
   "hasMap": "https://maps.app.goo.gl/evcKr3kiqecZcRUT8",
   "telephone": ["+542901490255", "+542901414618"],
-  "email": "",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Gregoria Matorras del Ser 6322, Barrio San Martín",
@@ -198,15 +198,16 @@
   --radius:16px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:clip}
 h1,h2,h3,h4,.cond{font-family:'Barlow Condensed','Inter',sans-serif;text-transform:uppercase;line-height:1.05}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
-img,svg{display:block}
+img,svg{display:block;max-width:100%}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 section{scroll-margin-top:96px}
 button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit}
 ::selection{background:var(--red);color:#fff}
 
 /* ============ TOPBAR ============ */
@@ -214,7 +215,7 @@ button{font-family:inherit;cursor:pointer}
 .topbar .container{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
 .topbar-left{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .topbar-item{display:flex;align-items:center;gap:7px}
-.topbar-item svg{width:14px;height:14px;fill:var(--red)}
+.topbar-item svg{width:14px;height:14px;fill:var(--red);flex-shrink:0}
 .topbar a:hover{color:#fff}
 .topbar-right{display:flex;align-items:center;gap:14px}
 .fb-top{display:flex;align-items:center;gap:7px;background:rgba(24,119,242,.15);border:1px solid rgba(24,119,242,.4);padding:4px 12px;border-radius:999px;color:#8ab4f8;font-weight:600;transition:.25s}
@@ -263,7 +264,7 @@ button{font-family:inherit;cursor:pointer}
 .nav a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:16px;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy);padding:8px 12px;border-radius:8px;transition:.2s;position:relative}
 .nav a:hover,.nav a.active{color:var(--red);background:rgba(217,35,50,.07)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:17px;letter-spacing:1px;text-transform:uppercase;padding:13px 26px;border-radius:10px;border:none;transition:.25s;cursor:pointer}
-.btn svg{width:18px;height:18px;fill:currentColor}
+.btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
 .btn-wa{background:var(--wa);color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.35)}
 .btn-wa:hover{background:var(--wa-dark);transform:translateY(-2px)}
 .btn-red{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(217,35,50,.35)}
@@ -278,40 +279,39 @@ button{font-family:inherit;cursor:pointer}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* ============ HERO CON FONDO NÍTIDO EN MOVIMIENTO ============ */
+/* ============ HERO — FONDO ALEJADO, COMPLETO Y NÍTIDO ============ */
 .hero{color:#fff;position:relative;overflow:hidden;padding:84px 0 100px;background:var(--navy)}
 .hero-bg{position:absolute;inset:-12% 0;z-index:0;will-change:transform}
-.hero-bg-img{
-  position:absolute;inset:0;
-  background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;
-  animation:kenBurns 22s ease-in-out infinite alternate;
-  opacity:1;
-}
 .hero-bg-fallback{position:absolute;inset:0;background:linear-gradient(130deg,var(--navy) 0%,var(--navy-2) 55%,var(--navy-3) 100%)}
-@keyframes kenBurns{
-  0%{transform:scale(1.04) translate(0,0)}
-  50%{transform:scale(1.16) translate(-2.2%,-1.6%)}
-  100%{transform:scale(1.07) translate(2%,1.4%)}
+/* Capa difuminada que rellena los laterales (sin recortar nada) */
+.hero-bg-blur{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;filter:blur(18px) brightness(.72);transform:scale(1.14)}
+/* Imagen completa (contain) y nítida: se ve TODO el paisaje */
+.hero-bg-img{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/contain no-repeat;animation:kenBurnsSuave 26s ease-in-out infinite alternate}
+@keyframes kenBurnsSuave{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.025)}
+  100%{transform:scale(1)}
 }
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(125deg,rgba(11,22,38,.68) 0%,rgba(13,26,44,.45) 45%,rgba(20,42,68,.28) 100%)}
+/* Velo mínimo para que la imagen se vea lo más limpia posible */
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(125deg,rgba(11,22,38,.55) 0%,rgba(13,26,44,.34) 45%,rgba(20,42,68,.16) 100%)}
 .hero .container{position:relative;z-index:2}
 .hero-left{max-width:780px;position:relative;z-index:2}
 .gear-deco{position:absolute;fill:#fff;opacity:.05;z-index:1;animation:spinSlow 40s linear infinite;pointer-events:none}
 .gear-deco.g1{width:420px;height:420px;top:-120px;right:-100px;animation-duration:55s}
 .gear-deco.g2{width:280px;height:280px;bottom:-90px;left:-70px;animation-direction:reverse;animation-duration:38s}
-.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(217,35,50,.18);border:1px solid rgba(217,35,50,.55);color:#ffb3ba;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:22px}
-.hero-chip svg{width:14px;height:14px;fill:var(--red)}
-.hero h1{font-size:clamp(42px,5.4vw,68px);font-weight:800;letter-spacing:1px;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.hero-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(217,35,50,.18);border:1px solid rgba(217,35,50,.55);color:#ffb3ba;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:7px 16px;border-radius:999px;margin-bottom:22px;backdrop-filter:blur(3px)}
+.hero-chip svg{width:14px;height:14px;fill:var(--red);flex-shrink:0}
+.hero h1{font-size:clamp(40px,5.4vw,68px);font-weight:800;letter-spacing:1px;text-shadow:0 2px 16px rgba(0,0,0,.55)}
 .hero h1 span{color:var(--red)}
-.hero-sub{margin:20px 0 28px;font-size:17.5px;color:#e2eaf3;max-width:600px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero-sub{margin:20px 0 28px;font-size:17.5px;color:#eef3f8;max-width:600px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .hero-sub strong{color:#fff}
 
 /* ===== DESPLEGABLE DE REPUESTOS EN HERO ===== */
 .hero-buscador{background:rgba(11,22,38,.45);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);border-radius:16px;padding:20px 22px;max-width:640px;margin-bottom:30px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
 .hero-buscador label{display:block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:21px;letter-spacing:1.2px;text-transform:uppercase;color:#fff;margin-bottom:12px}
 .hb-row{display:flex;gap:12px}
-.hb-row .select-wrap{flex:1}
-.hb-row select{width:100%;padding:14px 44px 14px 16px;border-radius:10px;border:2px solid transparent;font-family:inherit;font-size:15.5px;font-weight:600;background:#fff;color:var(--text);appearance:none;cursor:pointer;outline:none;transition:.2s}
+.hb-row .select-wrap{flex:1;min-width:0}
+.hb-row select{width:100%;padding:14px 44px 14px 16px;border-radius:10px;border:2px solid transparent;font-size:15.5px;font-weight:600;background:#fff;color:var(--text);appearance:none;cursor:pointer;outline:none;transition:.2s}
 .hb-row select:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(217,35,50,.25)}
 .hb-row .btn{white-space:nowrap}
 
@@ -349,14 +349,13 @@ button{font-family:inherit;cursor:pointer}
 .dot:hover{background:rgba(255,255,255,.8)}
 .dot.active{background:var(--red);width:32px}
 .carrusel-count{position:absolute;top:16px;right:16px;z-index:5;background:rgba(11,22,38,.65);border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:700;font-size:13px;padding:6px 14px;border-radius:999px;backdrop-filter:blur(4px);letter-spacing:1px}
-/* Barra de progreso del autoplay */
 .carrusel-progress{position:absolute;top:0;left:0;height:4px;background:var(--red);z-index:6;width:0;animation:progressBar 4s linear infinite}
 @keyframes progressBar{from{width:0}to{width:100%}}
 
 /* ============ SECTION HEAD ============ */
 .section-head{text-align:center;max-width:680px;margin:0 auto 46px}
 .section-head .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.section-head h2{font-size:clamp(34px,4vw,48px);font-weight:800;letter-spacing:1px;color:var(--navy)}
+.section-head h2{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:1px;color:var(--navy)}
 .section-head p{margin-top:12px;color:var(--muted);font-size:16px}
 .pad{padding:88px 0}
 
@@ -364,15 +363,15 @@ button{font-family:inherit;cursor:pointer}
 #repuestos{background:var(--white)}
 .form-card{max-width:880px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:36px;position:relative;overflow:hidden}
 .form-card::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--red),var(--wa))}
-.form-card h3{font-size:28px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.form-card h3{font-size:28px;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .form-card .fc-sub{color:var(--muted);font-size:14.5px;margin-bottom:26px}
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.fgroup{display:flex;flex-direction:column;gap:7px}
+.fgroup{display:flex;flex-direction:column;gap:7px;min-width:0}
 .fgroup.full{grid-column:1 / -1}
 .fgroup label{font-weight:700;font-size:13px;letter-spacing:.6px;text-transform:uppercase;color:var(--navy)}
 .fgroup label .req{color:var(--red)}
 .fgroup label .opt{color:var(--muted);font-weight:600;text-transform:none;letter-spacing:0}
-.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:10px;font-family:inherit;font-size:15.5px;color:var(--text);background:#fbfcfe;transition:.2s;outline:none;appearance:none}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:10px;font-size:15.5px;color:var(--text);background:#fbfcfe;transition:.2s;outline:none;appearance:none}
 .fgroup textarea{resize:vertical;min-height:90px}
 .fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 4px rgba(217,35,50,.1)}
 .select-wrap{position:relative}
@@ -391,10 +390,10 @@ button{font-family:inherit;cursor:pointer}
 .pop-title{text-align:center;font-size:24px;color:var(--navy);margin:56px 0 8px;letter-spacing:1px}
 .pop-sub{text-align:center;color:var(--muted);font-size:14.5px;margin-bottom:30px}
 .pop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1000px;margin:0 auto}
-.pop-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center;cursor:pointer;transition:.25s}
+.pop-card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center;cursor:pointer;transition:.25s;min-width:0}
 .pop-card:hover{border-color:var(--red);transform:translateY(-6px);box-shadow:var(--shadow)}
 .pop-icon{width:92px;height:92px;margin:0 auto 14px;border-radius:50%;background:linear-gradient(135deg,rgba(217,35,50,.12),rgba(27,58,92,.12));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:.25s;border:3px solid var(--line)}
-.pop-icon img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:2;transition:transform .4s}
+.pop-icon img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:2;transition:transform .4s;max-width:none}
 .pop-card:hover .pop-icon{border-color:var(--red);transform:scale(1.05)}
 .pop-card:hover .pop-icon img{transform:scale(1.14)}
 .pop-emoji{font-size:36px;z-index:1}
@@ -411,10 +410,10 @@ button{font-family:inherit;cursor:pointer}
 .banner-ofertas{background:linear-gradient(120deg,#e2303f 0%,#a81624 70%,#7c0f1b 100%)}
 .banner-novedades{background:linear-gradient(120deg,#16324f 0%,#1d4e89 65%,#112233 100%)}
 
-/* ============ MARCAS CON LOGOS REALES ============ */
+/* ============ MARCAS ============ */
 #marcas{background:var(--white)}
 .marcas-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.marca{background:#fbfcfe;border:2px solid var(--line);border-radius:12px;padding:20px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:.25s;cursor:default}
+.marca{background:#fbfcfe;border:2px solid var(--line);border-radius:12px;padding:20px 10px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:.25s;cursor:default;min-width:0}
 .marca:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:var(--shadow)}
 .marca-logo{height:48px;width:auto;max-width:110px;object-fit:contain;transition:transform .3s}
 .marca:hover .marca-logo{transform:scale(1.14)}
@@ -423,14 +422,15 @@ button{font-family:inherit;cursor:pointer}
 .marcas-note{text-align:center;color:var(--muted);font-size:14px;margin-top:26px}
 .marcas-note a{color:var(--red);font-weight:700}
 
-/* ============ UBICACION ============ */
+/* ============ UBICACION — FONDO ALEJADO Y NÍTIDO ============ */
 #ubicacion{color:#fff;position:relative;overflow:hidden;background:var(--navy)}
 .ubi-bg{position:absolute;inset:-10% 0;z-index:0}
-.ubi-bg-img{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;animation:kenBurns 26s ease-in-out infinite alternate-reverse;opacity:1}
-.ubi-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(130deg,rgba(11,22,38,.92) 0%,rgba(18,35,58,.82) 55%,rgba(27,58,92,.68) 100%)}
+.ubi-bg-blur{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/cover no-repeat;filter:blur(18px) brightness(.6);transform:scale(1.14)}
+.ubi-bg-img{position:absolute;inset:0;background:url('DESARMADERO%20DE%20FONDO.png') center/contain no-repeat;animation:kenBurnsSuave 30s ease-in-out infinite alternate-reverse;opacity:1}
+.ubi-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(130deg,rgba(11,22,38,.88) 0%,rgba(18,35,58,.74) 55%,rgba(27,58,92,.58) 100%)}
 .ubi-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;position:relative;z-index:2}
 .ubi-left .kicker{color:#ff8a94;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
-.ubi-left h2{font-size:clamp(32px,3.6vw,44px);font-weight:800;margin:10px 0 22px}
+.ubi-left h2{font-size:clamp(30px,3.6vw,44px);font-weight:800;margin:10px 0 22px}
 .ubi-address{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:20px;margin-bottom:22px;backdrop-filter:blur(4px)}
 .ubi-pin{width:48px;height:48px;border-radius:12px;background:var(--red);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(217,35,50,.4)}
 .ubi-pin svg{width:24px;height:24px;fill:#fff}
@@ -464,7 +464,7 @@ button{font-family:inherit;cursor:pointer}
 /* ============ CONTACTO ============ */
 #contacto{background:var(--white)}
 .contact-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-bottom:56px}
-.ccard{background:#fbfcfe;border:2px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;transition:.25s;display:block}
+.ccard{background:#fbfcfe;border:2px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;transition:.25s;display:block;min-width:0}
 .ccard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
 .ccard .cicon{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center}
 .ccard .cicon svg{width:28px;height:28px;fill:#fff}
@@ -508,7 +508,7 @@ button{font-family:inherit;cursor:pointer}
 /* ============ FLOTANTE (SOLO UN WHATSAPP) ============ */
 .floating{position:fixed;right:18px;bottom:18px;z-index:1000;display:flex;flex-direction:column;gap:14px;align-items:flex-end}
 .fab{position:relative;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.28);transition:.25s;background:var(--wa)}
-.fab svg{width:34px;height:34px;fill:#fff;z-index:2}
+.fab svg{width:34px;height:34px;fill:#fff;z-index:2;max-width:none}
 .fab:hover{transform:scale(1.1)}
 .fab::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);animation:fabPulse 2s ease-out infinite;z-index:0}
 @keyframes fabPulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(1.75);opacity:0}}
@@ -517,14 +517,14 @@ button{font-family:inherit;cursor:pointer}
 .fab:hover .fab-tip{opacity:1;transform:translateY(-50%) translateX(0)}
 
 /* ============ TOAST ============ */
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,80px);background:var(--navy);color:#fff;padding:14px 24px;border-radius:12px;font-weight:600;font-size:14.5px;box-shadow:0 12px 32px rgba(0,0,0,.35);z-index:1200;opacity:0;transition:.4s;display:flex;align-items:center;gap:10px;border-left:5px solid var(--wa)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,80px);background:var(--navy);color:#fff;padding:14px 24px;border-radius:12px;font-weight:600;font-size:14.5px;box-shadow:0 12px 32px rgba(0,0,0,.35);z-index:1200;opacity:0;transition:.4s;display:flex;align-items:center;gap:10px;border-left:5px solid var(--wa);max-width:calc(100vw - 32px);text-align:left}
 .toast.show{transform:translate(-50%,0);opacity:1}
 
 /* ============ REVEAL ============ */
 [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 [data-reveal].visible{opacity:1;transform:none}
 
-/* ============ RESPONSIVE ============ */
+/* ================= RESPONSIVE: TABLETS ================= */
 @media (max-width:1024px){
   .pop-grid{grid-template-columns:repeat(3,1fr)}
   .marcas-grid{grid-template-columns:repeat(4,1fr)}
@@ -536,11 +536,31 @@ button{font-family:inherit;cursor:pointer}
   .ubi-grid{grid-template-columns:1fr;gap:40px}
   .map-mock{height:320px}
   .banners{grid-template-columns:1fr}
-  .nav{position:fixed;top:0;right:-300px;width:280px;height:100vh;background:#fff;flex-direction:column;align-items:flex-start;padding:90px 24px 30px;gap:6px;box-shadow:-12px 0 32px rgba(0,0,0,.18);transition:right .35s ease;z-index:899}
+  .nav{position:fixed;top:0;right:-300px;width:280px;height:100vh;height:100dvh;background:#fff;flex-direction:column;align-items:flex-start;padding:90px 24px 30px;gap:6px;box-shadow:-12px 0 32px rgba(0,0,0,.18);transition:right .35s ease;z-index:899;overflow-y:auto}
   .nav.open{right:0}
   .nav a{width:100%;font-size:18px;padding:12px}
   .hamburger{display:flex;z-index:901}
   .header .btn-wa.desktop-only{display:none!important}
+}
+
+/* ================= RESPONSIVE: CELULARES ================= */
+@media (max-width:768px){
+  .pad{padding:64px 0}
+  #galeria{padding:60px 0 70px}
+  .hero{padding:48px 0 64px}
+  .hero h1{font-size:clamp(34px,8vw,48px)}
+  .hero-sub{font-size:16px}
+  .hero-buscador{padding:16px 18px}
+  .hero-buscador label{font-size:19px}
+  .pop-icon{width:78px;height:78px}
+  .banner{padding:34px 26px;min-height:230px}
+  .banner h3{font-size:36px}
+  .banner-deco{font-size:140px}
+  .map-mock{height:280px}
+  .footer-grid{gap:30px}
+  .form-card,.msg-card{padding:24px}
+  .slide-caption{font-size:20px}
+  .carrusel-btn{width:42px;height:42px;font-size:23px}
 }
 @media (max-width:640px){
   .topbar{display:none}
@@ -549,17 +569,58 @@ button{font-family:inherit;cursor:pointer}
   .marcas-grid{grid-template-columns:repeat(3,1fr)}
   .contact-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
-  .form-card,.msg-card{padding:24px}
   .hero-btns .btn{width:100%}
   .hb-row{flex-direction:column}
-  .pad{padding:64px 0}
-  #galeria{padding:60px 0 70px}
-  .fab{width:58px;height:58px}
-  .fab svg{width:30px;height:30px}
+  .hb-row .btn{width:100%}
   .logo-badge{width:52px;height:52px}
   .logo-text .l2{font-size:24px}
   .carrusel-btn{width:40px;height:40px;font-size:22px}
   .slide-caption{font-size:19px}
+  .ubi-btns .btn{width:100%}
+  .map-chip{font-size:11.5px;padding:6px 11px}
+}
+@media (max-width:480px){
+  .container{padding:0 14px}
+  .logo-text .l1{font-size:12px;letter-spacing:3px}
+  .logo-text .l2{font-size:21px}
+  .logo-badge{width:46px;height:46px}
+  .logo-badge .gear-fallback{width:26px;height:26px}
+  .pop-grid{gap:12px}
+  .pop-card{padding:16px 10px}
+  .pop-icon{width:66px;height:66px}
+  .pop-emoji{font-size:28px}
+  .pop-card h4{font-size:16px}
+  .marcas-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .marca-logo{height:38px}
+  .marca span{font-size:17px}
+  .fs-link{padding:9px 14px;font-size:12.5px}
+  .fab{width:56px;height:56px}
+  .fab svg{width:28px;height:28px}
+  .fab .fab-tip{display:none}
+  .floating{right:12px;bottom:12px}
+  .slide-caption{font-size:16px;padding:40px 16px 16px}
+  .slide-caption small{font-size:11.5px}
+  .carrusel-count{font-size:11.5px;padding:5px 11px}
+  .btn{padding:12px 20px;font-size:16px}
+  .hero-features{gap:8px}
+  .hf{font-size:12px;padding:7px 12px}
+  .form-card,.msg-card{padding:18px 16px}
+  /* 16px en inputs: evita el zoom automático en iPhone */
+  .fgroup input,.fgroup select,.fgroup textarea,.hb-row select{font-size:16px;padding:12px 14px}
+  .fgroup select{padding-right:40px}
+  .section-head h2{font-size:clamp(28px,8vw,36px)}
+  .toast{font-size:13px;padding:12px 18px}
+}
+@media (max-width:360px){
+  .logo-text .l2{font-size:19px}
+  .hero h1{font-size:30px}
+  .hero-buscador label{font-size:17px}
+  .pop-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .carrusel-dots{gap:7px}
+}
+/* Pantallas muy anchas */
+@media (min-width:1600px){
+  .container{max-width:1320px}
 }
 </style>
 </head>
@@ -588,7 +649,7 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
-<!-- ================= HEADER (LOGO CIRCULAR → SIEMPRE ARRIBA) ================= -->
+<!-- ================= HEADER ================= -->
 <header class="header" id="header">
   <div class="container">
     <a href="#inicio" class="logo js-to-top" aria-label="Autopartes San Martín - Ir arriba">
@@ -641,6 +702,7 @@ button{font-family:inherit;cursor:pointer}
 <section class="hero" id="inicio">
   <div class="hero-bg" id="heroBg">
     <div class="hero-bg-fallback"></div>
+    <div class="hero-bg-blur"></div>
     <div class="hero-bg-img" id="heroBgImg"></div>
   </div>
   <div class="hero-overlay"></div>
@@ -788,7 +850,7 @@ button{font-family:inherit;cursor:pointer}
 
         <div class="fgroup" id="grpEmail">
           <label for="emailInput">3. Tu email <span class="opt">(opcional)</span></label>
-          <input type="email" id="emailInput" name="email" placeholder="Ej: juan@email.com" autocomplete="email">
+          <input type="email" id="emailInput" name="email" placeholder="Ej: juan@email.com" autocomplete="email" inputmode="email">
           <span class="field-error">⚠️ El email no parece válido (ej: nombre@dominio.com).</span>
         </div>
 
@@ -931,9 +993,12 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </section>
 
-<!-- ================= UBICACION (NUEVO LINK DE MAPS) ================= -->
+<!-- ================= UBICACION ================= -->
 <section id="ubicacion" class="pad">
-  <div class="ubi-bg"><div class="ubi-bg-img"></div></div>
+  <div class="ubi-bg">
+    <div class="ubi-bg-blur"></div>
+    <div class="ubi-bg-img"></div>
+  </div>
   <div class="ubi-overlay"></div>
   <div class="container">
     <div class="ubi-grid">
@@ -1043,7 +1108,7 @@ button{font-family:inherit;cursor:pointer}
         </div>
         <div class="fgroup">
           <label for="emailC">Tu email <span class="opt">(opcional)</span></label>
-          <input type="email" id="emailC" placeholder="Ej: maria@email.com">
+          <input type="email" id="emailC" placeholder="Ej: maria@email.com" inputmode="email">
         </div>
         <div class="fgroup full" id="grpMensajeC">
           <label for="mensajeC">Mensaje <span class="req">*</span></label>
@@ -1272,18 +1337,16 @@ button{font-family:inherit;cursor:pointer}
   }
   function reiniciarAuto(){ iniciarAuto(); reiniciarProgreso(); }
 
-  /* Reinicia la barra de progreso roja en cada cambio */
   function reiniciarProgreso(){
     if(!barraProgreso) return;
     barraProgreso.style.animation = 'none';
-    void barraProgreso.offsetWidth; /* fuerza el reinicio de la animación */
+    void barraProgreso.offsetWidth;
     barraProgreso.style.animation = '';
   }
 
   document.getElementById('btnNext').addEventListener('click', function(){ slideSiguiente(); reiniciarAuto(); });
   document.getElementById('btnPrev').addEventListener('click', function(){ slideAnterior(); reiniciarAuto(); });
 
-  /* Pausa solo mientras el dedo está tocando (celular) y se reanuda solo */
   var touchStartX = 0;
   carrusel.addEventListener('touchstart', function(ev){ touchStartX = ev.changedTouches[0].screenX; clearInterval(autoTimer); }, { passive:true });
   carrusel.addEventListener('touchend', function(ev){
@@ -1292,7 +1355,6 @@ button{font-family:inherit;cursor:pointer}
     iniciarAuto();
   }, { passive:true });
 
-  /* Flechas del teclado */
   document.addEventListener('keydown', function(ev){
     var rect = carrusel.getBoundingClientRect();
     var visible = rect.top < window.innerHeight && rect.bottom > 0;
@@ -1301,7 +1363,6 @@ button{font-family:inherit;cursor:pointer}
     if(ev.key === 'ArrowLeft'){ slideAnterior(); reiniciarAuto(); }
   });
 
-  /* Garantiza que el autoplay siempre esté corriendo */
   iniciarAuto();
   document.addEventListener('visibilitychange', function(){
     if(document.hidden){ clearInterval(autoTimer); } else { iniciarAuto(); }
@@ -1363,7 +1424,6 @@ button{font-family:inherit;cursor:pointer}
       return;
     }
 
-    /* Mensaje con emojis para mejor comprensión */
     var lineas = [
       '🚗 *' + MARCA + '* 🚗',
       '━━━━━━━━━━━━━━━━━━━',
@@ -1488,5 +1548,6 @@ button{font-family:inherit;cursor:pointer}
 </script>
 </body>
 </html>
+
 
 
